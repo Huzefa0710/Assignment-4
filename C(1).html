@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Change Text, Style, and Image Example</title>
+    <style>
+        #text {
+            color: black;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+        #image {
+            width: 200px;
+            height: 200px;
+            border: 2px solid #000;
+            transition: transform 0.3s ease;
+        }
+    </style>
+    <script>
+        function changeContent() {
+            // Change Text and Style
+            const text = document.getElementById("text");
+            text.innerText = "Text Changed!";
+            text.style.color = "blue";
+            text.style.fontSize = "30px";
+
+            // Change Image
+            const image = document.getElementById("image");
+            image.src = "img.jpg/200/ff0000/ffffff?text=New+Image";
+            image.style.transform = "rotate(10deg)";
+        }
+    </script>
+</head>
+<body>
+
+    <h2>Change Text, Style, and Image Example</h2>
+    <p id="text">Original Text</p>
+    <img id="image" src="img.jpg/200" alt="Original Image"><br><br>
+    <button onclick="changeContent()">Change Content</button>
+
+</body>
+</html>

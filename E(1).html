@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Date Object Example</title>
+    <script>
+        function showDateTime() {
+            const now = new Date();
+            document.getElementById("datetime").innerHTML = now.toLocaleString();
+        }
+        setInterval(showDateTime, 1000); 
+    </script>
+
+</head>
+
+<body onload="showDateTime()">
+    <h2>Current Date & Time:</h2>
+    <p id="datetime"></p>
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Simple Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        #chat-container {
+            width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .message {
+            text-align: left;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .user {
+            background-color: #007bff;
+            color: white;
+        }
+        .bot {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Simple Chatbot</h2>
+    <div id="chat-container">
+        <div id="chat-box"></div>
+        <input type="text" id="userInput" placeholder="Type your message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <script>
+        function sendMessage() {
+            const userInput = document.getElementById("userInput").value.trim();
+            if (userInput === "") {
+                return;
+            }
+
+            const chatBox = document.getElementById("chat-box");
+            const userMessage = document.createElement("div");
+            userMessage.className = "message user";
+            userMessage.innerText = "You: " + userInput;
+            chatBox.appendChild(userMessage);
+
+            const botMessage = document.createElement("div");
+            botMessage.className = "message bot";
+            botMessage.innerText = "Bot: " + getBotResponse(userInput);
+            chatBox.appendChild(botMessage);
+
+            document.getElementById("userInput").value = ""; 
+        }
+
+        function getBotResponse(input) {
+            input = input.toLowerCase();
+            if (input.includes("hello") || input.includes("hi")) {
+                return "Hello! How can I help you today?";
+            } else if (input.includes("how are you")) {
+                return "I'm just a bot, but I'm doing great! How about you?";
+            } else if (input.includes("your name")) {
+                return "I'm a simple chatbot created in JavaScript!";
+            } else if (input.includes("bye")) {
+                return "Goodbye! Have a great day!";
+            } else {
+                return "I'm not sure how to respond to that. Try asking something else!";
+            }
+        }
+    </script>
+
+</body>
+</html>

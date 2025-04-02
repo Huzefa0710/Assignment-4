@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Generate Random Number</title>
+    <script>
+        function generateRandomNumber() {
+            const min = 1;
+            const max = 100;
+            const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+
+            document.getElementById("randomNumber").innerText = `Random Number: ${randomNumber}`;
+        }
+    </script>
+</head>
+<body>
+
+    <h2>Generate Random Number</h2>
+    <button onclick="generateRandomNumber()">Generate</button>
+    <p id="randomNumber"></p>
+
+</body>
+</html>

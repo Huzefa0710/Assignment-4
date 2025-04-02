@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Loops Example</title>
+    <script>
+        function generateForLoopList() {
+            let list = document.getElementById("forLoopList");
+            list.innerHTML = "";
+
+            for (let i = 1; i <= 5; i++) {
+                let li = document.createElement("li");
+                li.innerText = "Item " + i;
+                list.appendChild(li);
+            }
+        }
+
+        function generateWhileLoopList() {
+            let number = parseInt(document.getElementById("whileInput").value);
+            let list = document.getElementById("whileLoopList");
+            list.innerHTML = ""; 
+
+            if (isNaN(number) || number <= 0) {
+                list.innerText = "Please enter a positive number.";
+                return;
+            }
+
+            let count = 1;
+            while (count <= number) {
+                let li = document.createElement("li");
+                li.innerText = "Item " + count;
+                list.appendChild(li);
+                count++;
+            }
+        }
+
+        function generateDoWhileLoopList() {
+            let list = document.getElementById("doWhileLoopList");
+            list.innerHTML = ""; 
+
+            let count = 1;
+            do {
+                let li = document.createElement("li");
+                li.innerText = "Item " + count;
+                list.appendChild(li);
+                count++;
+            } while (count <= 5);
+        }
+    
+    </script>
+</head>
+
+<body>
+    <h2>For Loop: List of Items</h2>
+    <button onclick="generateForLoopList()">Generate List</button>
+    <ul id="forLoopList"></ul>
+
+    <h2>While Loop: Dynamic List</h2>
+    <label for="whileInput">Enter number of items:</label>
+    <input type="number" id="whileInput" required><br><br>
+
+    <button onclick="generateWhileLoopList()">Generate List</button>
+    <ul id="whileLoopList"></ul>
+
+    <h2>Do-While Loop: List of Items</h2>
+    <button onclick="generateDoWhileLoopList()">Generate List</button>
+    <ul id="doWhileLoopList"></ul>
+</body>
+
+</html>

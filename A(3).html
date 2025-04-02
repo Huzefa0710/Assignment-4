@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>(if-else, switch-case)</title>
+    <script>
+        function validateAge() {
+            let age = parseInt(document.getElementById("age").value);
+            if (isNaN(age) || age <= 0) {
+                document.getElementById("ageResult").innerText = "Please enter a valid age.";
+            } else if (age < 18) {
+                document.getElementById("ageResult").innerText = "You must be 18 or older.";
+            } else if (age <= 60) {
+                document.getElementById("ageResult").innerText = "Welcome!";
+            } else {
+                document.getElementById("ageResult").innerText = "Senior citizen discount applies.";
+            }
+        }
+        function getDayName() {
+            let day = parseInt(document.getElementById("day").value);
+            let dayName;
+
+            switch (day) {
+                case 1: dayName = "Monday"; break;
+                case 2: dayName = "Tuesday"; break;
+                case 3: dayName = "Wednesday"; break;
+                case 4: dayName = "Thursday"; break;
+                case 5: dayName = "Friday"; break;
+                case 6: dayName = "Saturday"; break;
+                case 7: dayName = "Sunday"; break;
+                default: dayName = "Invalid day";
+            }
+
+            document.getElementById("dayResult").innerText = dayName;
+        }
+    </script>
+</head>
+
+<body>
+    <h2>Age Validation</h2>
+    <label for="age">Enter your age:</label>
+    <input type="number" id="age" required><br><br>
+
+    <button onclick="validateAge()">Submit</button>
+    <p id="ageResult"></p>
+
+    <h2>Day Name Using Switch-Case</h2>
+    <label for="day">Enter a number (1-7):</label>
+    <input type="number" id="day" required><br><br>
+
+    <button onclick="getDayName()">Get Day Name</button>
+    <p id="dayResult"></p>
+</body>
+
+</html>
+
+

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Variables Example</title>
+    <script>
+        function showVariables() {
+            var name = "Huzefa";
+            document.getElementById("varOutput").innerText = "Name (var): " + name;
+
+            let age = 20;
+            document.getElementById("letOutput").innerText = "Age (let): " + age;
+
+            const PI = 3.14159;
+            document.getElementById("constOutput").innerText = "PI (const): " + PI;
+        }
+    </script>
+</head>
+<body onload="showVariables()">
+    <h2>Variables (var, let, const)</h2>
+    <p id="varOutput"></p>
+    <p id="letOutput"></p>
+    <p id="constOutput"></p>
+</body>
+</html>

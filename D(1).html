@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Form Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+        input {
+            display: block;
+            margin-bottom: 10px;
+            padding: 8px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script>
+        function validateForm(event) {
+            event.preventDefault();
+
+            let isValid = true;
+
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const phone = document.getElementById("phone").value.trim();
+            const password = document.getElementById("password").value.trim();
+
+            document.getElementById("nameError").innerText = "";
+            document.getElementById("emailError").innerText = "";
+            document.getElementById("phoneError").innerText = "";
+            document.getElementById("passwordError").innerText = "";
+
+            if (name === "") {
+                document.getElementById("nameError").innerText = "Name is required.";
+                isValid = false;
+            }
+
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,}$/;
+            if (!emailPattern.test(email)) {
+                document.getElementById("emailError").innerText = "Invalid email format.";
+                isValid = false;
+            }
+
+            const phonePattern = /^[0-9]{10}$/;
+            if (!phonePattern.test(phone)) {
+                document.getElementById("phoneError").innerText = "Invalid phone number. Must be 10 digits.";
+                isValid = false;
+            }
+
+            const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            if (!passwordPattern.test(password)) {
+                document.getElementById("passwordError").innerText = "Password must be at least 8 characters long and contain uppercase, lowercase, a number, and a special character.";
+                isValid = false;
+            }
+
+            if (isValid) {
+                alert("Registration Successful!");
+            }
+        }
+
+        function validateField(fieldId, regex, errorId, errorMessage) {
+            const fieldValue = document.getElementById(fieldId).value.trim();
+            if (!regex.test(fieldValue)) {
+                document.getElementById(errorId).innerText = errorMessage;
+            } else {
+                document.getElementById(errorId).innerText = "";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h2>Registration Form with Validation</h2>
+    <form onsubmit="validateForm(event)">
+        <input type="text" id="name" placeholder="Enter your name" oninput="validateField('name', /.+/, 'nameError', 'Name is required.')">
+        <span id="nameError" class="error"></span>
+
+        <input type="text" id="email" placeholder="Enter your email" oninput="validateField('email', /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,}$/, 'emailError', 'Invalid email format.')">
+        <span id="emailError" class="error"></span>
+
+        <input type="text" id="phone" placeholder="Enter your phone number" oninput="validateField('phone', /^[0-9]{10}$/, 'phoneError', 'Phone number must be 10 digits.')">
+        <span id="phoneError" class="error"></span>
+
+        <input type="password" id="password" placeholder="Enter your password" oninput="validateField('password', /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/, 'passwordError', 'Password must contain uppercase, lowercase, number, and special character.')">
+        <span id="passwordError" class="error"></span>
+
+        <button type="submit">Register</button>
+    </form>
+
+</body>
+</html>
